@@ -8,6 +8,7 @@ void SecondArrayWithIF(string[] array1, string[] array2)
     if(array1[i].Length <= 3)
         {
         array2[count] = array1[i];
+        count++;
         }
     }
 }
