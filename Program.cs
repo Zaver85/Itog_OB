@@ -1,24 +1,38 @@
-string[] array1 = new string[5] {"123", "23", "hello", "world", "res"};
-string[] array2 = new string[array1.Length];
-void SecondArrayWithIF(string[] array1, string[] array2)
+using System;
+
+class Program
 {
-    int count = 0;
-    for (int i = 0; i < array1.Length; i++)
+    static void Main(string[] args)
     {
-    if(array1[i].Length <= 3)
+        string[] inputArray = { "Hello", "2", "world", ": -)" };
+        string[] resultArray = FilterStrings(inputArray);
+
+        Console.WriteLine("Исходный массив: " + string.Join(", ", inputArray));
+        Console.WriteLine("Результат: " + string.Join(", ", resultArray));
+    }
+
+    static string[] FilterStrings(string[] array)
+    {
+        int count = 0;
+        for (int i = 0; i < array.Length; i++)
         {
-        array2[count] = array1[i];
-        count++;
+            if (array[i].Length <= 3)
+            {
+                count++;
+            }
         }
+
+        string[] resultArray = new string[count];
+        count = 0;
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i].Length <= 3)
+            {
+                resultArray[count] = array[i];
+                count++;
+            }
+        }
+
+        return resultArray;
     }
 }
-void PrintArray(string[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write($"{array[i]} ");
-    }
-    Console.WriteLine();
-}
-SecondArrayWithIF(array1, array2);
-PrintArray(array2);
